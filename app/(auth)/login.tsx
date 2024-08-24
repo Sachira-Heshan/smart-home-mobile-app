@@ -1,5 +1,5 @@
 import { Colors } from "@/constants/Colors";
-import { Link } from "expo-router";
+import { Link, useRouter } from "expo-router";
 import { Formik } from "formik";
 import {
    View,
@@ -13,13 +13,16 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 import React, { useCallback, useState } from "react";
 import * as yup from "yup";
+import axios from "axios";
 
 const loginSchema = yup.object().shape({
    email: yup.string().email().required(),
-   password: yup.string().required().min(8),
+   password: yup.string().required().min(4),
 });
 
 export default function Login() {
+   const router = useRouter();
+
    const [refreshing, setRefreshing] = useState(false);
 
    const onRefresh = useCallback(() => {
@@ -36,6 +39,19 @@ export default function Login() {
 
    const handleLogin = (values: LoginValues) => {
       console.log(values);
+      const { email, password } = values;
+      axios
+         .post("http://localhost:8000/v1/user/login", {
+            email,
+            password,
+         })
+         .then((response) => {
+            console.log(response.data);
+            router.push("/(tabs)/home");
+         })
+         .catch((error) => {
+            console.error(error);
+         });
    };
 
    return (

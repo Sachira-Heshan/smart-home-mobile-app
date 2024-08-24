@@ -9,7 +9,7 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 import React, { useCallback, useState } from "react";
 
-export default function Settings() {
+export default function Users() {
    const [refreshing, setRefreshing] = useState(false);
 
    const onRefresh = useCallback(() => {
@@ -31,7 +31,7 @@ export default function Settings() {
             style={{ flex: 1 }}
          >
             <View style={styles.container}>
-               <Text>Settings screen.</Text>
+               <Text>Users screen.</Text>
             </View>
          </ScrollView>
       </SafeAreaView>

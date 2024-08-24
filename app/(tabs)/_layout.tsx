@@ -4,13 +4,13 @@ import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 export default function TabLayout() {
    return (
       <Tabs
-         initialRouteName="index"
+         initialRouteName="home"
          screenOptions={{
             headerTitleAlign: "center",
          }}
       >
          <Tabs.Screen
-            name="index"
+            name="home"
             options={{
                headerTitle: "Dashboard",
                title: "Home",
@@ -26,6 +26,16 @@ export default function TabLayout() {
                title: "Devices",
                tabBarIcon: ({ color }) => (
                   <MaterialIcons name="devices" size={24} color={color} />
+               ),
+            }}
+         />
+         <Tabs.Screen
+            name="users"
+            options={{
+               headerTitle: "Users",
+               title: "Users",
+               tabBarIcon: ({ color }) => (
+                  <MaterialIcons name="person" size={24} color={color} />
                ),
             }}
          />

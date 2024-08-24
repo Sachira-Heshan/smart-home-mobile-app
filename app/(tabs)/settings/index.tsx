@@ -8,8 +8,9 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import React, { useCallback, useState } from "react";
+import { Link } from "expo-router";
 
-export default function Home() {
+export default function Settings() {
    const [refreshing, setRefreshing] = useState(false);
 
    const onRefresh = useCallback(() => {
@@ -31,7 +32,8 @@ export default function Home() {
             style={{ flex: 1 }}
          >
             <View style={styles.container}>
-               <Text>Dashboard screen.</Text>
+               <Text>Settings screen.</Text>
+               <Link href="/(auth)">Logout</Link>
             </View>
          </ScrollView>
       </SafeAreaView>
